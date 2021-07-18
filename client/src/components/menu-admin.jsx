@@ -1,19 +1,19 @@
 import React from 'react'
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List'
+import Divider from '@material-ui/core/Divider'
 import { Drawer } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { AppBar } from '@material-ui/core';
-import { Toolbar } from '@material-ui/core';
-import { mainListItems, secondaryListItems } from './list-menu-admin';
-import { IconButton } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
-import Typography from '@material-ui/core/Typography';
-import CssBaseline from '@material-ui/core/CssBaseline';
-
-
+import MenuIcon from '@material-ui/icons/Menu'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import { AppBar } from '@material-ui/core'
+import { Toolbar } from '@material-ui/core'
+import { mainListItems, secondaryListItems } from './list-menu-admin'
+import { IconButton } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
+import clsx from 'clsx'
+import Typography from '@material-ui/core/Typography'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { getNameUser } from '../services/auth'
+import LogoIcon from '../assets/img/salvus.svg'
 
 const drawerWidth = 240;
 
@@ -77,17 +77,25 @@ const useStyles = makeStyles((theme) => ({
     fixedHeight: {
         height: 240,
     },
-}));
+}))
 
 export default function MenuAdmin(props) {
-    const classes = useStyles();
+    const classes = useStyles()
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
-        setOpen(true);
-    };
+        setOpen(true)
+    }
     const handleDrawerClose = () => {
-        setOpen(false);
-    };
+        setOpen(false)
+    }
+    function nameToUpperCase(){
+        const nameToUP = getNameUser()
+        if(nameToUP){
+            return nameToUP.toUpperCase()
+        }else{
+            return nameToUP
+        }
+    }
     return (
         <>
             <CssBaseline />
@@ -105,6 +113,7 @@ export default function MenuAdmin(props) {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         {props.nameMenu}
                     </Typography>
+                    {nameToUpperCase()}
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -115,6 +124,7 @@ export default function MenuAdmin(props) {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
+                    <img width="170px" src={LogoIcon} alt="" />
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
                     </IconButton>

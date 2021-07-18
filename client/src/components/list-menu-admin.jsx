@@ -6,6 +6,8 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import People from '@material-ui/icons/People';
 import ExitToApp from '@material-ui/icons/ExitToApp';
+import api from '../services/api';
+import { getToken, logout } from '../services/auth';
 
 export const mainListItems = (
   <div>
@@ -23,12 +25,12 @@ export const mainListItems = (
     </ListItem>
     
   </div>
-);
+)
 
 export const secondaryListItems = (
   <div>
     <ListSubheader inset>Opções</ListSubheader>
-    <ListItem button>
+    <ListItem button onClick={confirmSair}>
       <ListItemIcon>
         <ExitToApp />
       </ListItemIcon>
@@ -36,4 +38,16 @@ export const secondaryListItems = (
     </ListItem>
     
   </div>
-);
+)
+
+async function confirmSair(){
+  if (window.confirm('Deseja realmente sair do sistema?')) {
+    const response = await api.get('/api/users/destroytoken', {headers: {token: getToken()}})
+    if(response.status===200){
+      logout()
+      window.location.href='/admin/login'
+    }else{
+      alert('Não foi possível fazer o logout!')
+    }
+  }
+}

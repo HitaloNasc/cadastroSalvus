@@ -10,6 +10,9 @@ routes.get('/api/users.details/:_id', User.details)
 routes.delete('/api/users/:_id', User.delete)
 routes.put('/api/users', User.update)
 routes.post('/api/users/login', User.login)
+routes.get('/api/users/checktocken', User.checkToken)
+routes.get('/api/users/destroytoken', User.destroyToken)
+
 
 
 module.exports = routes

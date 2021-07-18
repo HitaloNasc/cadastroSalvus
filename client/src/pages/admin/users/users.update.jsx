@@ -126,7 +126,7 @@ export default function CreateUser() {
                       onChange={e => setUserType(e.target.value)}
                     >
                       <MenuItem value={1}>Administrador</MenuItem>
-                      <MenuItem value={2}>Funcionário</MenuItem>
+                      <MenuItem value={2}>Profissional</MenuItem>
                     </Select>
                   </FormControl>
                 </Grid>

@@ -70,7 +70,7 @@ export default function ListUser() {
     if (params === 1) {
       return <Chip label="Administrador" color="primary" />
     } else {
-      return <Chip label="Funcionário" color="secondary" />
+      return <Chip label="Profissional" color="secondary" />
     }
   }
 

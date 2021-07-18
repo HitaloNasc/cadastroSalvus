@@ -8,6 +8,9 @@ import Footer from '../../../components/footer-admin';
 import Paper from '@material-ui/core/Paper';
 import { TextField, FormControl, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
 import api from '../../../services/api';
+import InputMask from 'react-input-mask'
+import 'date-fns';
+import { KeyboardDatePicker } from '@material-ui/pickers';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,6 +47,9 @@ export default function CreateUser() {
   const [email, setEmail] = useState('')
   const [userType, setUserType] = useState('')
   const [password, setPassword] = useState('')
+  const [birth, setBirth] = useState('')
+  const [tel, setTel] = useState('')
+  // const []
 
   async function handleSubmit() {
 
@@ -62,7 +68,6 @@ export default function CreateUser() {
     }
   }
 
-
   return (
     <div className={classes.root}>
       <MenuAdmin nameMenu="USUÁRIOS" />
@@ -72,8 +77,8 @@ export default function CreateUser() {
           <Grid item sm={12}>
             <Paper className={classes.paper}>
 
-              <h2>Cadastro de Usuário</h2>
-
+              <h2>CRIE SUA CONTA SALVUS.ME</h2>
+              <h3>Dados de Login</h3>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={12}>
                   <TextField
@@ -99,7 +104,7 @@ export default function CreateUser() {
                     onChange={e => setEmail(e.target.value)}
                   />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                {/* <Grid item xs={12} sm={3}>
                   <FormControl className={classes.formControl}>
                     <InputLabel id="userType-label">Tipo</InputLabel>
                     <Select
@@ -109,11 +114,11 @@ export default function CreateUser() {
                       onChange={e => setUserType(e.target.value)}
                     >
                       <MenuItem value={1}>Administrador</MenuItem>
-                      <MenuItem value={2}>Funcionário</MenuItem>
+                      <MenuItem value={2}>Proficional</MenuItem>
                     </Select>
                   </FormControl>
-                </Grid>
-                <Grid item xs={12} sm={3}>
+                </Grid> */}
+                <Grid item xs={12} sm={6}>
                   <TextField
                     type="password"
                     required
@@ -127,6 +132,41 @@ export default function CreateUser() {
                   />
                 </Grid>
               </Grid>
+
+              <h3>Dados Pessoais</h3>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={3}>
+                  {/* <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="MM/dd/yyyy"
+                    margin="normal"
+                    id="birth"
+                    label="Data de Nascimento"
+                    value={birth}
+                    onChange={e => setBirth(e.target.value)}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                    }}
+                  /> */}
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                  <InputMask
+                  item
+                    required
+                    mask="(99) 99999-9999"
+                    id="tel"
+                    name="tel"
+                    type="tel"
+                    label="(__) _____-____"
+                    fullWidth
+                    autoComplete="tel"
+                    value={tel}
+                    onChange={e => setTel(e.target.value)}
+                  />
+                </Grid>
+              </Grid>
+
               <hr />
               <Grid item xs={12} sm={12}>
                 <Button onClick={handleSubmit} variant="contained" color="primary">

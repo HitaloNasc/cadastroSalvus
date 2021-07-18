@@ -18,3 +18,6 @@ export const getNameUser = () => localStorage.getItem(NAME_USER)
 
 export const setTypeUser = type => localStorage.setItem(TYPE_USER, type)
 export const getTypeUser = () => localStorage.getItem(TYPE_USER)
+
+
+export const getToken = () => localStorage.getItem(TOKEN_KEY)
