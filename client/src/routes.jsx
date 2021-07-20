@@ -23,9 +23,9 @@ export default function Routes() {
                 {/* Rota admin */}
                 <Route path='/' exact component={Login} />
                 <PrivateRoute path='/admin' exact component={Dashboard} />
-                
+
                 <PrivateRoute path='/admin/users' exact component={ListUsers} />
-                <PrivateRoute path='/admin/users/create' exact component={CreateUsers} />
+                <Route path='/admin/users/create' exact component={CreateUsers} />
                 <PrivateRoute path='/admin/users/update/:idUser' exact component={UpdateUsers} />
             </Switch>
         </BrowserRouter>

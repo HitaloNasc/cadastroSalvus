@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     avatar: {
-        // backgroundColor: theme.palette.secondary.main,
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.success.dark,
+        // backgroundColor: theme.palette.primary.main,
         margin: theme.spacing(1),
     },
     form: {
@@ -35,9 +35,11 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1),
     },
     submit: {
+        backgroundColor: theme.palette.success.dark,
         margin: theme.spacing(3, 0, 2),
     },
-    icon: {
+    submitCreate: {
+        backgroundColor: theme.palette.secondary.dark
     }
 }));
 
@@ -65,6 +67,10 @@ export default function SignIn() {
                 }
             })
 
+    }
+
+    function handleSubmitCreate() {
+        return window.location.href = '/admin/users/create'
     }
 
     return (
@@ -111,6 +117,15 @@ export default function SignIn() {
                     onClick={handleSubmit}
                 >
                     Entrar
+                </Button>
+                <Button
+                    fullWidth
+                    variant="contained"
+                    color="secondary"
+                    className={classes.submitCreate}
+                    onClick={handleSubmitCreate}
+                >
+                    Criar usuário
                 </Button>
             </div>
             <Box mt={8}>

@@ -18,7 +18,17 @@ module.exports = {
             username,
             email,
             userType,
-            password
+            password,
+            tel,
+            gender,
+            cpf,
+            address,
+            cep,
+            profession,
+            registration,
+            primaryOccupation,
+            secondaryOccupation,
+            birth
         } = req.body
         let data = {}
         let user = await Usuario.findOne({
@@ -30,7 +40,17 @@ module.exports = {
                 username,
                 email,
                 userType,
-                password
+                password,
+                tel,
+                gender,
+                cpf,
+                address,
+                cep,
+                profession,
+                registration,
+                primaryOccupation,
+                secondaryOccupation,
+                birth
             }
 
             user = await Usuario.create(data)
@@ -47,6 +67,7 @@ module.exports = {
             _id
         })
         res.json(user)
+        console.log(user)
     },
     async delete(req, res) {
         const {
@@ -62,14 +83,34 @@ module.exports = {
             _id,
             username,
             email,
+            userType,
             password,
-            userType
+            tel,
+            gender,
+            cpf,
+            address,
+            cep,
+            profession,
+            registration,
+            primaryOccupation,
+            secondaryOccupation,
+            birth
         } = req.body
         const data = {
             username,
             email,
+            userType,
             password,
-            userType
+            tel,
+            gender,
+            cpf,
+            address,
+            cep,
+            profession,
+            registration,
+            primaryOccupation,
+            secondaryOccupation,
+            birth
         }
         const user = await Usuario.findOneAndUpdate({
             _id

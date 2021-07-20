@@ -40,6 +40,18 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
+  admin: {
+    backgroundColor: theme.palette.success.dark
+  },
+  professional: {
+    backgroundColor: theme.palette.secondary.dark
+  },
+  buttonUpdate: {
+    borderColor: theme.palette.success.dark
+  },
+  buttonDelete: {
+    borderColor: theme.palette.secondary.dark
+  }
 }));
 
 // function createData(name, calories, fat, carbs, protein) {
@@ -68,18 +80,18 @@ export default function ListUser() {
 
   function typeUser(params) {
     if (params === 1) {
-      return <Chip label="Administrador" color="primary" />
+      return <Chip label="Administrador" color="primary" className={classes.admin} />
     } else {
-      return <Chip label="Profissional" color="secondary" />
+      return <Chip label="Profissional" color="secondary" className={classes.professional} />
     }
   }
 
-  async function handleDelete(id){
-    if(window.confirm("Deseja realmente excluir este usuário?")){
+  async function handleDelete(id) {
+    if (window.confirm("Deseja realmente excluir este usuário?")) {
       var result = await api.delete('api/users/' + id)
-      if (result.status===200) {
-        window.location.href='/admin/users'
-      }else{
+      if (result.status === 200) {
+        window.location.href = '/admin/users'
+      } else {
         alert('Ocorreu um erro, tente novamente.')
       }
     }
@@ -120,8 +132,8 @@ export default function ListUser() {
                               <TableCell align='center'>{new Date(row.createdAt).toLocaleDateString('pt-br')}</TableCell>
                               <TableCell align="center">
                                 <ButtonGroup aria-label="outlined primary button group">
-                                  <Button color="primary" href={'/admin/users/update/' + row._id}>Editar</Button>
-                                  <Button color="secondary" onClick={() => handleDelete(row._id)}>Excluir</Button>
+                                  <Button className={classes.buttonUpdate} href={'/admin/users/update/' + row._id}>Editar</Button>
+                                  <Button className={classes.buttonDelete} onClick={() => handleDelete(row._id)}>Excluir</Button>
                                 </ButtonGroup>
                               </TableCell>
                             </TableRow>

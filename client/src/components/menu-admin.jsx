@@ -20,6 +20,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
+        backgroundColor: theme.palette.success.dark,
         paddingRight: 24, // keep right padding when drawer closed
     },
     toolbarIcon: {
@@ -88,11 +89,11 @@ export default function MenuAdmin(props) {
     const handleDrawerClose = () => {
         setOpen(false)
     }
-    function nameToUpperCase(){
+    function nameToUpperCase() {
         const nameToUP = getNameUser()
-        if(nameToUP){
+        if (nameToUP) {
             return nameToUP.toUpperCase()
-        }else{
+        } else {
             return nameToUP
         }
     }

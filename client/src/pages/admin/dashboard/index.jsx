@@ -32,6 +32,11 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
+  logo:{
+    height:"55vh",
+    marginTop: "10vh",
+    marginBottom: "10vh",
+  }
 }));
 
 export default function Dashboard() {
@@ -39,12 +44,18 @@ export default function Dashboard() {
 
   return (
     <div className={classes.root}>
-      <MenuAdmin nameMenu="DASHBOARD"/>
+      <MenuAdmin nameMenu="DASHBOARD" />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        <Container className={classes.container}>
           <Grid container spacing={3}>
-            <img height="300vh" className="bg-dashboard" src={ImgAdmin} alt="logo-salvus" />
+            <Grid item align="center" xm={12} sm={12} className={classes.logo} >
+            <img 
+            height="100%"
+            width="100%"
+            src={ImgAdmin} 
+            alt="logo-salvus" />
+            </Grid>
           </Grid>
           <Box pt={4}>
             <Footer />
