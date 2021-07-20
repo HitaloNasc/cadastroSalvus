@@ -68,7 +68,7 @@ export default function CreateUser() {
   // Delcaraçãs das variáveis do formulário
   const [username, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [userType, setUserType] = useState('')
+  const [userType = 2, setUserType] = useState('')
   const [password, setPassword] = useState('')
   const [tel, setTel] = useState('')
   const [gender, setGender] = useState('')
@@ -120,9 +120,9 @@ export default function CreateUser() {
       && profession !== ''
       && primaryOccupation !== ''
     ) {
+
       const response = await api.post('/api/users', data)
       if (response.status === 200) {
-        console.log(data)
         window.location.href = '/'
       } else {
         alert('Erro ao cadastrar o usuário')

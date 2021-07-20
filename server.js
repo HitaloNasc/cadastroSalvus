@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017/cadastroSalvus', {
     }, (err) => {
 
         if (err) {
-            console.log('ESTOU AQUI \n\n' + err)
+            console.log(err)
         } else {
             console.log('MongoDB CONECTADO com sucesso!')
         }

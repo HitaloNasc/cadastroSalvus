@@ -1,21 +1,17 @@
 import React from 'react'
 import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
-import { Drawer } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import { AppBar } from '@material-ui/core'
-import { Toolbar } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, makeStyles, Drawer } from '@material-ui/core'
 import { mainListItems, secondaryListItems } from './list-menu-admin'
-import { IconButton } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core'
 import clsx from 'clsx'
 import Typography from '@material-ui/core/Typography'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { getNameUser } from '../services/auth'
 import LogoIcon from '../assets/img/salvus.svg'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 
 const useStyles = makeStyles((theme) => ({
@@ -82,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuAdmin(props) {
     const classes = useStyles()
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(true)
     const handleDrawerOpen = () => {
         setOpen(true)
     }

@@ -1,13 +1,13 @@
-import React from 'react';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import People from '@material-ui/icons/People';
-import ExitToApp from '@material-ui/icons/ExitToApp';
-import api from '../services/api';
-import { getToken, logout } from '../services/auth';
+import React from 'react'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListSubheader from '@material-ui/core/ListSubheader'
+import DashboardIcon from '@material-ui/icons/Dashboard'
+import People from '@material-ui/icons/People'
+import ExitToApp from '@material-ui/icons/ExitToApp'
+import api from '../services/api'
+import { getToken, logout } from '../services/auth'
 
 export const mainListItems = (
   <div>

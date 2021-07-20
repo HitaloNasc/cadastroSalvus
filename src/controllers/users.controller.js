@@ -124,7 +124,6 @@ module.exports = {
             email,
             password
         } = req.body
-        // console.log(req.body)
         Usuario.findOne({
             email
         }, function (err, user) {

@@ -6,16 +6,26 @@ const DataShema = new mongoose.Schema({
     email: String,
     userType: {
         type: Number,
-        default: 1
+        default: 2
     },
-    password: String
+    password: String,
+    tel: String,
+    gender: String,
+    cpf: String,
+    address: String,
+    cep: String,
+    profession: String,
+    registration: String,
+    primaryOccupation: String,
+    secondaryOccupation: String,
+    birth: Date
 }, {
     timestamps: true
 })
 
 DataShema.pre('save', function (next) {
     if (!this.isModified('password')) {
-        return next();
+        return next()
     }
     this.password = bcrypt.hashSync(this.password, 10)
     next()
