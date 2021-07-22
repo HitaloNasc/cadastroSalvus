@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router'
+// import { useParams } from 'react-router'
 import MenuAdmin from '../../../components/menu-professional'
 import ImgAdmin from '../../../assets/img/salvus.svg'
 import InputMask from 'react-input-mask'

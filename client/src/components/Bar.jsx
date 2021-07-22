@@ -2,105 +2,39 @@ import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
 import {
     Chart,
+    BarSeries,
+    Title,
     ArgumentAxis,
     ValueAxis,
-    BarSeries,
-    Legend,
 } from '@devexpress/dx-react-chart-material-ui';
-import { withStyles } from '@material-ui/core/styles';
-import { Stack } from '@devexpress/dx-react-chart';
-import { ageStructure } from './demo-data/data-vizualization';
-import api from "../services/api"
+import { Animation } from '@devexpress/dx-react-chart';
 
+const data = []
 
-
-
-const styles = theme => ({
-    title: {
-        marginLeft: theme.spacing(2),
-        marginBottom: 0,
-        marginRight: theme.spacing(2),
-    },
-    item: {
-        flexDirection: 'row-reverse',
-    },
-    label: {
-        textAlign: 'right',
-    },
-});
-
-const RootWithTitle = withStyles(styles)(({ classes, ...restProps }) => (
-
-    <div>
-        <h2 className={classes.title}>
-            <span role="img" aria-label="family">👪 Population</span>
-        </h2>
-        <Legend.Root {...restProps} />
-    </div>
-));
-
-const Item = withStyles(styles)(({ classes, ...restProps }) => (
-    <Legend.Item {...restProps} className={classes.item} />
-));
-
-const Label = withStyles(styles)(({ classes, ...restProps }) => (
-    <Legend.Label {...restProps} className={classes.label} />
-));
-
-const stacks = [
-    { series: ['👶 Young', '🧑 Adult', '🧓 Old'] },
-];
-
-export default class Demo extends React.PureComponent {
+export default class Bar extends React.PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-            // data: ageStructure,
-            data: this.useEffect(() => {
-                async function loadUsers() {
-                    const response = await api.get('/api/users')
-                    // setUsers(response.data)
-                }
-                loadUsers()
-            }, [])
-        }
-        
+        this.props.info.forEach(element => {
+            data.push(element)
+        });
     }
 
     render() {
-        const { data: chartData } = this.state;
 
         return (
             <Paper>
                 <Chart
-                    data={chartData}
+                    data={data}
                 >
                     <ArgumentAxis />
-                    <ValueAxis />
+                    <ValueAxis max={30} />
 
-                    {/* <BarSeries
-                        name="👶 Young"
-                        valueField="young"
-                        argumentField="state"
-                    />
                     <BarSeries
-                        name="🧑 Adult"
-                        valueField="middle"
-                        argumentField="state"
-                    /> */}
-                    <BarSeries
-                        name="🧓 Old"
-                        valueField="older"
-                        argumentField="state"
+                        valueField="population"
+                        argumentField="profession"
                     />
-                    <Stack
-                        stacks={stacks}
-                    />
-                    <Legend
-                        rootComponent={RootWithTitle}
-                        itemComponent={Item}
-                        labelComponent={Label}
-                    />
+                    <Title text="Profissionais por profissão" />
+                    <Animation />
                 </Chart>
             </Paper>
         );

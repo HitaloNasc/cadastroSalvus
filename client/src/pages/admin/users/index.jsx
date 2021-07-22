@@ -14,6 +14,9 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import api from '../../../services/api'
 import { Button, ButtonGroup, Chip } from '@material-ui/core'
+import Bar from '../../../components/Bar'
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,9 +58,23 @@ const useStyles = makeStyles((theme) => ({
   buttonDelete: {
     borderColor: theme.palette.secondary.dark
   },
+  paperR: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 5,
+  },
   titleH2: {
     color: theme.palette.success.dark,
     fontWeight: 600
+  },
+  count: {
+    color: theme.palette.success.main,
+    fontSize: 40,
+    margin: 0,
   }
 }))
 
@@ -71,6 +88,33 @@ export default function ListUser() {
     }
     loadUsers()
   }, [])
+
+  const professionals = users.filter((user) => user.userType == 2)
+
+  // const professionalsArea = [
+  //   {biomedico: professionals.filter(p => p.profession === 'Biomédico(a)').length},
+  //   {dentista: professionals.filter(p => p.profession === 'Dentista').length},
+  //   {educadorFisico: professionals.filter(p => p.profession === 'Educador(a) Físico').length},
+  //   {enfermeiro: professionals.filter(p => p.profession === 'Enfermeiro(a)').length},
+  //   {fisioterapeuta: professionals.filter(p => p.profession === 'Fisioterapeuta').length},
+  //   {nutricionista: professionals.filter(p => p.profession === 'Nutricionista').length},
+  //   {psicologo: professionals.filter(p => p.profession === 'Psicólogo(a)').length},
+  //   {radiologista: professionals.filter(p => p.profession === 'Radiologista').length},
+  // ]
+
+  const professionalsArea = [
+    {profession:'Biomédico(a)', population: professionals.filter(p => p.profession === 'Biomédico(a)').length},
+    {profession:'Dentista', population: professionals.filter(p => p.profession === 'Dentista').length},
+    {profession:'Educador(a) Físico', population: professionals.filter(p => p.profession === 'Educador(a) Físico').length},
+    {profession:'Enfermeiro(a)', population: professionals.filter(p => p.profession === 'Enfermeiro(a)').length},
+    {profession:'Fisioterapeuta', population: professionals.filter(p => p.profession === 'Fisioterapeuta').length},
+    {profession:'Nutricionista', population: professionals.filter(p => p.profession === 'Nutricionista').length},
+    {profession:'Psicólogo(a)', population: professionals.filter(p => p.profession === 'Psicólogo(a)').length},
+    {profession:'Radiologista', population: professionals.filter(p => p.profession === 'Radiologista').length},
+  ]
+
+  // console.log(professionalsArea)
+  const admin = users.filter(user => user.userType == 1)
 
   function typeUser(params) {
     if (params === 1) {
@@ -98,9 +142,27 @@ export default function ListUser() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
+            {/* <Grid item sm={8}>
+              <Paper className={classes.paper}>
+                <Bar info={professionalsArea} />
+              </Paper>
+            </Grid> */}
+            <Grid item sm={6}>
+              <Paper className={classes.paperR}>
+                <h2 className={classes.titleH2}>Total de administradores</h2>
+                <p className={classes.count}>{admin.length}</p>
+              </Paper>
+              </Grid>
+            <Grid item sm={6}>
+        
+              <Paper className={classes.paperR}>
+                <h2 className={classes.titleH2}>Total de profissionais</h2>
+                <p className={classes.count}>{professionals.length}</p>
+              </Paper>
+            </Grid>
             <Grid item sm={12}>
               <Paper className={classes.paper}>
-                <h2 className={classes.titleH2}>Listagem de Usuários</h2>
+                <h2 align="center" className={classes.titleH2}>Lista de Usuários</h2>
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={12}>
                     <TableContainer component={Paper}>
