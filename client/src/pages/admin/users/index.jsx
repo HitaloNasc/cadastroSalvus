@@ -18,6 +18,11 @@ import { Button, ButtonGroup, Chip } from '@material-ui/core'
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    fontFamily: 'Arial'
+  },
+  table: {
+    minWidth: 650,
+    whiteSpace: 'nowrap'
   },
   title: {
     flexGrow: 1,
@@ -49,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonDelete: {
     borderColor: theme.palette.secondary.dark
+  },
+  titleH2: {
+    color: theme.palette.success.dark,
+    fontWeight: 600
   }
 }))
 
@@ -91,10 +100,9 @@ export default function ListUser() {
           <Grid container spacing={3}>
             <Grid item sm={12}>
               <Paper className={classes.paper}>
-                <h2>Listagem de Usuários</h2>
+                <h2 className={classes.titleH2}>Listagem de Usuários</h2>
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={12}>
-
                     <TableContainer component={Paper}>
                       <Table className={classes.table} size="small" aria-label="a dense table">
                         <TableHead>
@@ -102,6 +110,15 @@ export default function ListUser() {
                             <TableCell>Nome</TableCell>
                             <TableCell align="center">E-mail</TableCell>
                             <TableCell align="center">Tipo</TableCell>
+                            <TableCell align="center">Telefone</TableCell>
+                            <TableCell align="center">Gênero</TableCell>
+                            <TableCell align="center">CPF</TableCell>
+                            <TableCell align="center">Profissão</TableCell>
+                            <TableCell align="center">Registro</TableCell>
+                            <TableCell align="center">Ocupação Primária</TableCell>
+                            <TableCell align="center">Ocupação Secundária</TableCell>
+                            <TableCell align="center">Rádio de Operação (km)</TableCell>
+                            <TableCell align="center">Data de Nascimento</TableCell>
                             <TableCell align="center">Data de Cadastro</TableCell>
                             <TableCell align="center">Opções</TableCell>
                           </TableRow>
@@ -114,8 +131,17 @@ export default function ListUser() {
                               </TableCell>
                               <TableCell align='center'>{row.email}</TableCell>
                               <TableCell align='center'>{typeUser(row.userType)}</TableCell>
+                              <TableCell align='center'>{row.tel}</TableCell>
+                              <TableCell align='center'>{row.gender}</TableCell>
+                              <TableCell align='center'>{row.cpf}</TableCell>
+                              <TableCell align='center'>{row.profession}</TableCell>
+                              <TableCell align='center'>{row.registration}</TableCell>
+                              <TableCell align='center'>{row.primaryOccupation}</TableCell>
+                              <TableCell align='center'>{row.secondaryOccupation}</TableCell>
+                              <TableCell align='center'>{row.range}</TableCell>
+                              <TableCell align='center'>{new Date(row.birth).toLocaleDateString('pt-br')}</TableCell>
                               <TableCell align='center'>{new Date(row.createdAt).toLocaleDateString('pt-br')}</TableCell>
-                              <TableCell align="center">
+                              <TableCell size='small' align="center">
                                 <ButtonGroup aria-label="outlined primary button group">
                                   <Button className={classes.buttonUpdate} href={'/admin/users/update/' + row._id}>Editar</Button>
                                   <Button className={classes.buttonDelete} onClick={() => handleDelete(row._id)}>Excluir</Button>

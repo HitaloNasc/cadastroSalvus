@@ -18,6 +18,7 @@ const DataShema = new mongoose.Schema({
     registration: String,
     primaryOccupation: String,
     secondaryOccupation: String,
+    range: Number,
     birth: Date
 }, {
     timestamps: true

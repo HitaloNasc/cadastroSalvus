@@ -10,7 +10,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Footer from '../../../components/footer-admin'
-import { login, setIdUser, setNameUser } from '../../../services/auth'
+import { login, setIdUser, setNameUser, setTypeUser } from '../../../services/auth'
+import { CircularProgress } from '@material-ui/core'
 import api from '../../../services/api'
 
 
@@ -43,8 +44,11 @@ export default function SignIn() {
     const classes = useStyles()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [loadingS, setLoadingS] = useState(false)
+    const [loadingC, setLoadingC] = useState(false)
 
     async function handleSubmit() {
+        setLoadingS(true)
         await api.post('/api/users/login', { email, password })
             .then(res => {
                 if (res.status === 200) {
@@ -53,20 +57,29 @@ export default function SignIn() {
                         login(res.data.token)
                         setIdUser(res.data.id_client)
                         setNameUser(res.data.user_name)
-
+                        setTypeUser(res.data.user_type)
                         window.location.href = '/Admin'
                     } else if (res.data.status === 2) {
                         alert('Atenção:' + res.data.error)
                     }
+                    setLoadingS(false)
                 } else {
                     alert('Erro no servidor.')
+                    setLoadingS(false)
                 }
             })
 
     }
-
+    function loadingSubmit() {
+        setLoadingS(true)
+        setTimeout(() => handleSubmit(), 1500)
+    }
     function handleSubmitCreate() {
         return window.location.href = '/admin/users/create'
+    }
+    function loadingCreate() {
+        setLoadingC(true)
+        setTimeout(() => handleSubmitCreate(), 1500)
     }
 
     return (
@@ -110,18 +123,20 @@ export default function SignIn() {
                     variant="contained"
                     color="primary"
                     className={classes.submit}
-                    onClick={handleSubmit}
+                    onClick={loadingSubmit}
+                    disabled={loadingS}
                 >
-                    Entrar
+                    {loadingS ? <CircularProgress /> : "ENTRAR"}
                 </Button>
                 <Button
                     fullWidth
                     variant="contained"
                     color="secondary"
                     className={classes.submitCreate}
-                    onClick={handleSubmitCreate}
+                    onClick={loadingCreate}
+                    disabled={loadingC}
                 >
-                    Criar usuário
+                    {loadingC ? <CircularProgress /> : "CRIAR USUÁRIO"}
                 </Button>
             </div>
             <Box mt={8}>

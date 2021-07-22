@@ -4,8 +4,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import DashboardIcon from '@material-ui/icons/Dashboard'
-import EqualizerIcon from '@material-ui/icons/Equalizer'
-import People from '@material-ui/icons/People'
+import People from '@material-ui/icons/Person'
 import ExitToApp from '@material-ui/icons/ExitToApp'
 import api from '../services/api'
 import { getToken, logout } from '../services/auth'
@@ -18,17 +17,11 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    {/* <ListItem button component='a' href="/admin/statistics" >
-      <ListItemIcon>
-        <EqualizerIcon />
-      </ListItemIcon>
-      <ListItemText primary="Estátisticas" />
-    </ListItem> */}
-    <ListItem button component="a" href="/admin/users" >
+    <ListItem button component="a" href="/admin/users/professional" >
       <ListItemIcon>
         <People />
       </ListItemIcon>
-      <ListItemText primary="Usuários" />
+      <ListItemText primary="Dados de usuário" />
     </ListItem>
     
   </div>

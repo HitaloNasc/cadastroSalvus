@@ -3,10 +3,8 @@ import MenuAdmin from '../../../components/menu-admin'
 import { useParams } from 'react-router'
 import ImgAdmin from '../../../assets/img/salvus.svg'
 import InputMask from 'react-input-mask'
-import DateFnsUtils from '@date-io/date-fns'
 import { TextField, FormControl, InputLabel, Select, MenuItem, Button, makeStyles, Box, Container, Grid, Paper } from '@material-ui/core'
 import Footer from '../../../components/footer-admin'
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
 import api from '../../../services/api'
 
 const useStyles = makeStyles((theme) => ({
@@ -52,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function CreateUser() {
+export default function UpdateUser() {
   const classes = useStyles()
 
   // Delcaraçãs das variáveis do formulário
@@ -67,15 +65,11 @@ export default function CreateUser() {
   const [cep, setCep] = useState('')
   const [profession, setProfession] = useState('')
   const [registration, setRegistration] = useState('')
+  const [range, setRange] = useState('')
   const [primaryOccupation, setPrimaryOccupation] = useState('')
   const [secondaryOccupation, setSecondaryOccupation] = useState('')
+  const [birth, setBirth] = useState('')
   const { idUser } = useParams()
-  const [birth, setBirth] = React.useState(new Date())
-
-  const handleDateChange = (date) => {
-    setBirth(date)
-  }
-
 
   function handleBack() {
     return window.location.href = '/admin/users'
@@ -84,6 +78,7 @@ export default function CreateUser() {
   useEffect(() => {
     async function getUser() {
       var response = await api.get('/api/users.details/' + idUser)
+      console.log(response)
       setName(response.data.username)
       setEmail(response.data.email)
       setUserType(response.data.userType)
@@ -95,6 +90,7 @@ export default function CreateUser() {
       setCep(response.data.cep)
       setProfession(response.data.profession)
       setRegistration(response.data.registration)
+      setRange(response.data.range)
       setPrimaryOccupation(response.data.primaryOccupation)
       setSecondaryOccupation(response.data.secondaryOccupation)
       setBirth(response.data.birth)
@@ -118,6 +114,7 @@ export default function CreateUser() {
       cep,
       profession,
       registration,
+      range,
       primaryOccupation,
       secondaryOccupation,
       birth
@@ -223,22 +220,21 @@ export default function CreateUser() {
                     <h3>Dados Pessoais</h3>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                      <KeyboardDatePicker
-                        fullWidth
-                        required
-                        helperText={'Formato inválido'}
-                        error={''}
-                        format="dd/MM/yyyy"
-                        margin="normal"
-                        label="Data de nascimento"
-                        value={birth}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                          'aria-label': 'change date',
-                        }}
-                      />
-                    </MuiPickersUtilsProvider>
+                    <TextField
+                      fullWidth
+                      required
+                      margin="normal"
+                      id="date"
+                      label="Data de nascimento"
+                      type="date"
+                      defaultValue="2017-05-24"
+                      className={classes.textField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      value={birth}
+                      onChange={e => setBirth(e.target.value)}
+                    />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <InputMask
@@ -321,7 +317,7 @@ export default function CreateUser() {
                   <Grid item xs={12} sm={12}>
                     <h3>Dado Proficionais</h3>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={4}>
                     <FormControl
                       margin="normal"
                       required
@@ -344,7 +340,7 @@ export default function CreateUser() {
                       </Select>
                     </FormControl>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={4}>
                     <TextField
                       margin="normal"
                       type="text"
@@ -356,6 +352,28 @@ export default function CreateUser() {
                       value={registration}
                       onChange={e => setRegistration(e.target.value)}
                     />
+                  </Grid>
+                  <Grid item xs={12} sm={4}>
+                    <FormControl
+                      margin="normal"
+                      required
+                      className={classes.formControl}>
+                      <InputLabel>Ráio de atuação</InputLabel>
+                      <Select
+                        value={range}
+                        onChange={e => setRange(e.target.value)}
+                      >
+                        <MenuItem disabled>Selecione</MenuItem>
+                        <MenuItem value={10}>10km</MenuItem>
+                        <MenuItem value={15}>15km</MenuItem>
+                        <MenuItem value={20}>20km</MenuItem>
+                        <MenuItem value={25}>25km</MenuItem>
+                        <MenuItem value={30}>30km</MenuItem>
+                        <MenuItem value={35}>35km</MenuItem>
+                        <MenuItem value={40}>40km</MenuItem>
+                        <MenuItem value={45}>45km</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <TextField

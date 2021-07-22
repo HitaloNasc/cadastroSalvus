@@ -28,6 +28,7 @@ module.exports = {
             registration,
             primaryOccupation,
             secondaryOccupation,
+            range,
             birth
         } = req.body
         let data = {}
@@ -50,6 +51,7 @@ module.exports = {
                 registration,
                 primaryOccupation,
                 secondaryOccupation,
+                range,
                 birth
             }
 
@@ -67,7 +69,6 @@ module.exports = {
             _id
         })
         res.json(user)
-        console.log(user)
     },
     async delete(req, res) {
         const {
@@ -94,6 +95,7 @@ module.exports = {
             registration,
             primaryOccupation,
             secondaryOccupation,
+            range,
             birth
         } = req.body
         const data = {
@@ -110,6 +112,7 @@ module.exports = {
             registration,
             primaryOccupation,
             secondaryOccupation,
+            range,
             birth
         }
         const user = await Usuario.findOneAndUpdate({
@@ -166,7 +169,7 @@ module.exports = {
                                 token: token,
                                 id_client: user._id,
                                 user_name: user.username,
-                                user_type: user.userType
+                                user_type: user.userType,
                             })
                         }
                     })
