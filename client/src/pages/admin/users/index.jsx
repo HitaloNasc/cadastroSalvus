@@ -91,29 +91,6 @@ export default function ListUser() {
 
   const professionals = users.filter((user) => user.userType == 2)
 
-  // const professionalsArea = [
-  //   {biomedico: professionals.filter(p => p.profession === 'Biomédico(a)').length},
-  //   {dentista: professionals.filter(p => p.profession === 'Dentista').length},
-  //   {educadorFisico: professionals.filter(p => p.profession === 'Educador(a) Físico').length},
-  //   {enfermeiro: professionals.filter(p => p.profession === 'Enfermeiro(a)').length},
-  //   {fisioterapeuta: professionals.filter(p => p.profession === 'Fisioterapeuta').length},
-  //   {nutricionista: professionals.filter(p => p.profession === 'Nutricionista').length},
-  //   {psicologo: professionals.filter(p => p.profession === 'Psicólogo(a)').length},
-  //   {radiologista: professionals.filter(p => p.profession === 'Radiologista').length},
-  // ]
-
-  const professionalsArea = [
-    {profession:'Biomédico(a)', population: professionals.filter(p => p.profession === 'Biomédico(a)').length},
-    {profession:'Dentista', population: professionals.filter(p => p.profession === 'Dentista').length},
-    {profession:'Educador(a) Físico', population: professionals.filter(p => p.profession === 'Educador(a) Físico').length},
-    {profession:'Enfermeiro(a)', population: professionals.filter(p => p.profession === 'Enfermeiro(a)').length},
-    {profession:'Fisioterapeuta', population: professionals.filter(p => p.profession === 'Fisioterapeuta').length},
-    {profession:'Nutricionista', population: professionals.filter(p => p.profession === 'Nutricionista').length},
-    {profession:'Psicólogo(a)', population: professionals.filter(p => p.profession === 'Psicólogo(a)').length},
-    {profession:'Radiologista', population: professionals.filter(p => p.profession === 'Radiologista').length},
-  ]
-
-  // console.log(professionalsArea)
   const admin = users.filter(user => user.userType == 1)
 
   function typeUser(params) {
@@ -142,11 +119,6 @@ export default function ListUser() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* <Grid item sm={8}>
-              <Paper className={classes.paper}>
-                <Bar info={professionalsArea} />
-              </Paper>
-            </Grid> */}
             <Grid item sm={6}>
               <Paper className={classes.paperR}>
                 <h2 className={classes.titleH2}>Total de administradores</h2>

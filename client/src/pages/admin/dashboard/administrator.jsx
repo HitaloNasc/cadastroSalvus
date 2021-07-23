@@ -7,8 +7,6 @@ import ImgAdmin from '../../../assets/img/salvus.svg'
 import MenuAdmin from '../../../components/menu-admin'
 import Footer from '../../../components/footer-admin'
 
-
-
 const useStyles = makeStyles((theme) => ({
   titleH2: {
     color: theme.palette.success.dark,

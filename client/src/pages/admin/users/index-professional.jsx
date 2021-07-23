@@ -401,9 +401,6 @@ export default function ListUser() {
                           <Button onClick={handleSubmit} color="primary" variant="contained" className={classes.button}>
                             Salvar
                           </Button>
-                          {/* <Button onClick={handleBack} variant="contained" color="secondary" className={classes.buttonBack}>
-                  Voltar
-                </Button> */}
                         </Grid>
                       </Paper>
                     </Grid>
