@@ -9,8 +9,6 @@ import { Paper } from '@material-ui/core'
 import clsx from 'clsx'
 import Title from '../../../components/Title'
 import { Typography } from '@material-ui/core'
-import Bar from '../../../components/Bar'
-import api from '../../../services/api'
 
 const useStyles = makeStyles((theme) => ({
     root: {
