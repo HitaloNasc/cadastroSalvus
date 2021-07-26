@@ -18,11 +18,24 @@ que a empresa disponibilize uma aplicação para que profissionais possam se cad
 
 ### Informações adicionais 
 
-Para rodar o projeto no modo de desenvolvimento, usar o script:
+Ao fazer o clone do projeto, deve-se:
 
+Na pasta cadastroSalvus, rodar o comando:
+>npm install
+
+Para que os pacotes referentes ao backend sejam instalados.
+
+Na pasta client, rodar o comando:
+>npm install
+
+Para que os pacostes referentes ao frontend sejam instalaos.
+
+Para rodar o projeto no modo de desenvolvimento, na pasta cadastroSalvus, usar o script:
 >npm run dev
 
-Com o banco de dados instalado, o login default para o perfil Administrativo e Profissional, tem respectivamente como campos de login:
+O servidor ocupará a porta 3001, o client ocupará a porta 3000.
+
+Com o banco de dados instalado, nesse projeto MongoDB 5.0 fazendo uso da porta 27017, o login default para o perfil Administrativo e Profissional, tem respectivamente como campos de login:
 
 Administrativo
 - E-mail: admin
