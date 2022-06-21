@@ -1,4 +1,4 @@
-# Sistema de Cadastro Salvus
+# Sistema de gerenciamento de proficionais de saúde
 
 ## Descrição
 
