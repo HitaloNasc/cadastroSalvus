@@ -1,5 +1,9 @@
 # Sistema de gerenciamento de proficionais de saúde
 
+<img height="350" align="center" src="https://user-images.githubusercontent.com/54161035/174724329-ee707d49-247b-4ac0-a893-48e19605fe2c.jpeg">
+
+##
+
 ## Descrição
 
 Esse projeto foi realizado como parte da seleção de estágio na empresa Salvus.
